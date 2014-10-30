@@ -1,1 +1,20 @@
-// Bootstrap stuff
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body{
+  padding-top: 40px;
+  margin-bottom: 100px;
+}
+
+.homepage{
+  background-image: image-url("background.jpg");
+  background-size: cover;
+}
+
+.navbar-fixed-bottom{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid;
+  border-radius: 7px;
+  background-color: white;
+}

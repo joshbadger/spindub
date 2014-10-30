@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="page-header">
+    <span class="h1">Flies<span>
+    <%= link_to "Create a new Fly", new_fly_path, class: "btn btn-primary pull-right" %>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @flies.each do |fly| %>
+      <tr>
+        <td><%= link_to fly.name, fly_path(fly) %></td>
+        <td><%= fly.classification %></td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+
+</div>

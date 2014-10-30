@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <title>Spindub</title>
+    <title>spinDub</title>
+    <%= stylesheet_link_tag 'application' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
   </head>
 
-  <body>
-
-    <div class="navbar">
-      <div class="container">
-        <!-- navbar here -->
-      </div>
-    </div>
+  <body class="<%= 'homepage' if current_page?('/') %>" >
 
     <div class="container">
-      <%= yield %>
+      <div class="navbar">
+        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <%= link_to "spinDub", home_path, class: "navbar-brand" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <footer>
-      <div class="container">
-        <!-- footer stuff here -->
-      </div>
-    </footer>
+    <%= yield %>
 
+    <div class="container navbar-fixed-bottom">
+      <footer>
+        <%= link_to_unless_current("flies", flies_path ) %>
+      </footer>
+    </div>
   </body>
 </html>

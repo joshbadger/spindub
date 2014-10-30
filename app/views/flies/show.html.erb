@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="h1">
+    <%= @fly.name%>
+    <div class="btn-toolbar pull-right">
+      <%= link_to "Edit", edit_fly_path(@fly), class: "btn btn-primary" %>
+      <%= link_to "Delete", fly_path(@fly), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+    </div>
+  </div>
+
+<br><br>
+
+  <dl class="dl-horizontal">
+    <dt>Name:</dt>
+    <dd><%= @fly.name %></dd>
+
+    <dt>type:</dt>
+    <dd><%= @fly.classification %></dd>
+  </dl>
+</div>
