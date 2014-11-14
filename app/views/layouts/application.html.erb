@@ -7,8 +7,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="<%= 'homepage' if current_page?('/') %>" >
-
+  <body>
     <div class="container">
       <div class="navbar">
         <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -20,12 +19,15 @@
         </div>
       </div>
     </div>
-
+    <div class="container">
+      <%= notice %>
+    </div>
     <%= yield %>
 
     <div class="container navbar-fixed-bottom">
       <footer>
-        <%= link_to_unless_current("flies", flies_path ) %>
+        <%= link_to_unless_current("flies", flies_path ) %> |
+        <%= link_to_unless_current("users", users_path ) %>
       </footer>
     </div>
   </body>
