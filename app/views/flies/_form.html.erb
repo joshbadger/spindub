@@ -1,4 +1,11 @@
-<%= form_for(@fly, html: {class: "form-horizontal"}) do |f| %>
+<%= form_for([current_user, @fly], html: {class: "form-horizontal"}) do |f| %>
+
+  <div class='form-group'>
+    <div class="col-sm-offset-1 col-sm-8">
+      <%= render 'shared/errors', object: @fly %>
+    </div>
+  </div>
+
   <div class="form-group">
     <%= f.label :name, class: "col-sm-1 control-label" %>
     <div class="col-sm-4">
@@ -8,7 +15,7 @@
 
   <div class="form-group">
     <%= f.label :classification, class: "col-sm-1 control-label" %>
-    <div class="col-sm-2">
+    <div class="col-sm-4">
       <%= f.text_field :classification, class: "form-control" %>
     </div>
   </div>

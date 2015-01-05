@@ -1,20 +1,25 @@
 class FliesController < ApplicationController
+  before_action :set_user
   before_action :set_fly, only: [:show, :edit, :update, :destroy]
+
   def index
-    @flies = Fly.all
+    @flies = Fly.where(user_id: current_user.id)
   end
 
   def show
   end
 
   def new
-    @fly = Fly.new
+    @fly = @user.flies.new
   end
 
   def create
-    fly = Fly.new(fly_params)
-    fly.save
-    redirect_to flies_path, notice: 'fly successfully created.'
+    @fly = @user.flies.new(fly_params)
+    if @fly.save
+      redirect_to user_flies_path, notice: 'fly successfully created.'
+    else
+      render :new
+    end
   end
 
   def edit
@@ -30,17 +35,20 @@ class FliesController < ApplicationController
 
   def destroy
     @fly.destroy
-    redirect_to flies_path, notice: 'fly was successfully deleted.'
+    redirect_to user_flies_path, notice: 'fly was successfully deleted.'
   end
 
 private
 
   def fly_params
-    params.require(:fly).permit(:name, :classification)
+    params.require(:fly).permit(:name, :classification, :user_id)
   end
 
   def set_fly
     @fly = Fly.find(params[:id])
   end
 
+  def set_user
+    @user = User.find(params[:user_id])
+  end
 end

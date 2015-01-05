@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root 'pages#index'
 
-  resources :flies, :users
+  resources :users do
+    resources :flies
+  end
 
   get 'signup' => 'registrations#new', as: :signup
   post 'signup' => 'registrations#create'

@@ -51,7 +51,7 @@
 
     <div class="container navbar-fixed-bottom">
       <footer>
-        <%= link_to_unless_current("flies", flies_path ) %> |
+        <%= link_to_unless_current("flies", user_flies_path(current_user) ) %> |
         <%= link_to_unless_current("users", users_path ) %>
       </footer>
     </div>
