@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141114225942) do
+ActiveRecord::Schema.define(version: 20150105212149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "flies", force: true do |t|
-    t.string "name"
-    t.string "classification"
+    t.string  "name"
+    t.string  "classification"
+    t.integer "user_id"
   end
 
   create_table "patterns", force: true do |t|

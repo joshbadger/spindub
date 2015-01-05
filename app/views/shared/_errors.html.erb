@@ -1,5 +1,18 @@
 <% if object.errors.present? %>
-  <% object.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
+  <% if params[:controller] == "registrations" %>
+    <% object.errors.full_messages.each do |msg| %>
+      <p class="text-danger">
+        <%= msg %>
+      </p>
+    <% end %>
+  <% else %>
+    <div class="alert alert-danger">
+      <strong><%= pluralize(object.errors.count, "error") %> prohibited this post from being saved:</strong>
+      <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 <% end %>
