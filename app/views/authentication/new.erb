@@ -1,0 +1,19 @@
+<div class="well col-md-offset-4 col-md-4">
+  <%= form_tag signin_path do |f| %>
+  <h1>Sign into spinDub</h1>
+
+  <% if @sign_in_error %>
+  <div class="text-danger">
+    <%= @sign_in_error %>
+  </div>
+  <% end %>
+
+  <div><%= label_tag :email %></div>
+  <div><%= email_field_tag :email, nil, class: "form-control" %></div>
+
+  <div><%= label_tag :password %></div>
+  <div><%= password_field_tag :password, nil,  class: "form-control" %></div>
+  <br>
+  <div><%= submit_tag "Sign In", class: "btn btn-primary"%></div>
+  <% end %>
+</div>
