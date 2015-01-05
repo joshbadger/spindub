@@ -1,5 +1,6 @@
-class AuthenticationController < ApplicationController
-  skip_before_action :ensure_current_user
+class AuthenticationController < PublicController
+  skip_before_action :ensure_logged_in
+  before_action :check_session_timeout, only: :create
 
   def create
     user = User.find_by_email(params[:email].downcase)
@@ -9,7 +10,7 @@ class AuthenticationController < ApplicationController
         redirect_to session[:destination]
         session[:destination] = nil # reset
       else
-        redirect_to root_path
+        redirect_to user_flies_path(user)
       end
     else
       @sign_in_error = "Username / password combination is invalid"
@@ -22,4 +23,10 @@ class AuthenticationController < ApplicationController
     redirect_to root_path
   end
 
+  private
+    def check_session_timeout
+      if session[:destination]
+        reset_session if session[:last_seen] < 2.minutes.ago
+      end
+    end
 end

@@ -6,6 +6,9 @@ Rails.application.routes.draw do
     resources :flies
   end
 
+  get 'terms' => 'pages#terms', as: :terms
+  get 'about' => 'pages#about', as: :about
+
   get 'signup' => 'registrations#new', as: :signup
   post 'signup' => 'registrations#create'
 

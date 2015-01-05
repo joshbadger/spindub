@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>spinDub</title>
+  <%= stylesheet_link_tag 'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="container">
+    <div class="navbar">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to "spinDub", current_user ? user_flies_path(current_user) : root_path, class: "navbar-brand" %>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to "Sign In", signin_path %></li>
+            <li><%= link_to "Sign Up", signup_path %></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <% if notice %>
+    <p id="notice" class="alert alert-success text-center">
+      <%= notice %>
+    </p>
+    <% end %>
+
+    <% if alert %>
+    <p id="alert" class="alert alert-danger text-center">
+      <%= alert %>
+    </p>
+    <% end %>
+  </div>
+
+  <div class="container">
+    <%= yield %>
+  </div>
+
+  <div class="container navbar-fixed-bottom">
+    <footer>
+      <%= link_to_unless_current("terms", terms_path ) %> |
+      <%= link_to_unless_current("about", about_path ) %>
+    </footer>
+  </div>
+</body>
+</html>
