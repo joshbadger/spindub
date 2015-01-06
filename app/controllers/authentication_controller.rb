@@ -10,7 +10,7 @@ class AuthenticationController < PublicController
         redirect_to session[:destination]
         session[:destination] = nil # reset
       else
-        redirect_to user_flies_path(user)
+        redirect_to user_fly_boxes_path(user)
       end
     else
       @sign_in_error = "Username / password combination is invalid"

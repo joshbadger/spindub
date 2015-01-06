@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'pages#index'
 
   resources :users do
+    resources :fly_boxes
     resources :flies
   end
 
