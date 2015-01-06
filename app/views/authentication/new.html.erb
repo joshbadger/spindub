@@ -8,12 +8,12 @@
   </div>
   <% end %>
 
-  <div><%= label_tag :email %></div>
-  <div><%= email_field_tag :email, nil, class: "form-control" %></div>
+  <%= label_tag :email %>
+  <%= email_field_tag :email, nil, class: "form-control" %>
 
-  <div><%= label_tag :password %></div>
-  <div><%= password_field_tag :password, nil,  class: "form-control" %></div>
+  <%= label_tag :password %>
+  <%= password_field_tag :password, nil,  class: "form-control" %>
   <br>
-  <div><%= submit_tag "Sign In", class: "btn btn-primary"%></div>
+  <%= submit_tag "Sign In", class: "btn btn-primary"%>
   <% end %>
 </div>
