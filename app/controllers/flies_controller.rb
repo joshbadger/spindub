@@ -2,9 +2,10 @@ class FliesController < ApplicationController
   before_action :set_user
   before_action :set_fly, only: [:show, :edit, :update, :destroy]
   before_action :ensure_owner, only: [:edit, :update, :destroy]
+  before_action :ensure_current_user, only: [:new, :create]
 
   def index
-    @flies = Fly.where(user_id: current_user.id)
+    @flies = Fly.where(user_id: @user.id)
   end
 
   def show
@@ -53,8 +54,8 @@ private
     @user = User.find(params[:user_id])
   end
 
-  def ensure_owner
-    unless @user.owns?(@fly)
+  def ensure_current_user
+    unless current_user.id == params[:user_id]
       raise AccessDenied
     end
   end

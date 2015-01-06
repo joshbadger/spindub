@@ -2,8 +2,8 @@
   <div class="h1">
     <%= @fly.name%>
     <div class="btn-toolbar pull-right">
-      <%= link_to "Edit", edit_fly_path(@fly), class: "btn btn-primary" %>
-      <%= link_to "Delete", fly_path(@fly), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+      <%= link_to "Edit", edit_user_fly_path, class: "btn btn-primary" %>
+      <%= link_to "Delete", user_fly_path, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     </div>
   </div>
 

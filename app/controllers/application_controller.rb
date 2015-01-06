@@ -26,4 +26,10 @@ class ApplicationController < ActionController::Base
         redirect_to signin_path, alert: 'You must be logged in to do that'
       end
     end
+
+    def ensure_owner
+      unless current_user.owns?(@fly)
+        raise AccessDenied
+      end
+    end
 end
